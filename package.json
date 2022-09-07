@@ -2,11 +2,15 @@
   "name": "pds-hackathon-prototype",
   "version": "0.0.0",
   "private": true,
+  "main": "dist/app",
+  "typings": "dist/app",
   "scripts": {
-    "build-sass": "rm -rf src/public/stylesheets/application.css && sass --no-source-map src/public/stylesheets/application.scss src/public/stylesheets/application.css --style compressed",
-    "copy-assets": "cp node_modules/govuk-frontend/govuk/all.js src/public/javascripts/govuk-frontend/",
-    "build": "npm run build-sass && npm run copy-assets",
-    "start": "node ./src/bin/www"
+    "clean": "rm -rf dist",
+    "build-sass": "rm -rf dist/public/stylesheets/application.css && sass --no-source-map src/public/stylesheets/application.scss dist/public/stylesheets/application.css --style compressed",
+    "copy-assets": "mkdir -p dist/public/javascripts/govuk-frontend && cp node_modules/govuk-frontend/govuk/all.js dist/public/javascripts/govuk-frontend",
+    "copy-views": "mkdir -p dist/views && cp src/views/*.njk dist/views",
+    "build": "npm run clean && npm run build-sass && npm run copy-assets && npm run copy-views && tsc",
+    "start": "node ."
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
@@ -14,9 +18,15 @@
     "express": "~4.16.1",
     "govuk-frontend": "^4.3.1",
     "morgan": "~1.9.1",
-    "nunjucks": "^3.2.3"
+    "nunjucks": "^3.2.3",
+    "typescript": "^4.8.2"
   },
   "devDependencies": {
+    "@types/cookie-parser": "^1.4.3",
+    "@types/express": "^4.17.13",
+    "@types/http-errors": "^1.8.2",
+    "@types/morgan": "^1.9.3",
+    "@types/nunjucks": "^3.2.1",
     "sass": "^1.52.3"
   }
 }
