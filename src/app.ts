@@ -1,5 +1,4 @@
-import express from "express";
-import { RequestHandler, ErrorRequestHandler } from "express";
+import express, { RequestHandler, ErrorRequestHandler } from "express";
 import createError from "http-errors";
 import path from "path";
 import cookieParser from "cookie-parser";
@@ -7,7 +6,7 @@ import logger from "morgan";
 import http from "http";
 import nunjucks from "nunjucks";
 
-import { indexRouter } from "./routes/index";
+import indexRouter from "./routes/index";
 
 const app: express.Application = express();
 
@@ -41,7 +40,7 @@ const notFoundHandler: RequestHandler = (req, res, next) => {
 app.use(notFoundHandler);
 
 // error handler
-const errorHandler: ErrorRequestHandler = (err, req, res, next) => {
+const errorHandler: ErrorRequestHandler = (err, req, res) => {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get("env") === "development" ? err : {};

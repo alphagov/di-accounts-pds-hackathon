@@ -5,11 +5,13 @@
   "main": "dist/app",
   "typings": "dist/app",
   "scripts": {
+    "lint": "eslint --ext .ts . --max-warnings=0",
     "clean": "rm -rf dist",
     "build-sass": "rm -rf dist/public/stylesheets/application.css && sass --no-source-map src/public/stylesheets/application.scss dist/public/stylesheets/application.css --style compressed",
     "copy-assets": "mkdir -p dist/public/javascripts/govuk-frontend && cp node_modules/govuk-frontend/govuk/all.js dist/public/javascripts/govuk-frontend",
     "copy-views": "mkdir -p dist/views && cp src/views/*.njk dist/views",
     "build": "npm run clean && npm run build-sass && npm run copy-assets && npm run copy-views && tsc",
+    "test": "npm run lint",
     "start": "node ."
   },
   "dependencies": {
@@ -17,6 +19,7 @@
     "debug": "~2.6.9",
     "express": "~4.16.1",
     "govuk-frontend": "^4.3.1",
+    "http-errors": "^2.0.0",
     "morgan": "~1.9.1",
     "nunjucks": "^3.2.3",
     "typescript": "^4.8.2"
@@ -27,6 +30,14 @@
     "@types/http-errors": "^1.8.2",
     "@types/morgan": "^1.9.3",
     "@types/nunjucks": "^3.2.1",
+    "@typescript-eslint/eslint-plugin": "^5.36.2",
+    "@typescript-eslint/parser": "^5.36.2",
+    "eslint": "^8.23.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-prettier": "^4.2.1",
     "sass": "^1.52.3"
   }
 }
