@@ -3,6 +3,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 let nunjucks = require('nunjucks')
+var path = require('path');
 
 var indexRouter = require('./routes/index');
 
@@ -16,10 +17,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 
-nunjucks.configure('views', {
-  autoescape:  true,
-  express:  app
-})
+nunjucks.configure(
+  ['src/views', 'node_modules/govuk-frontend/'], 
+  {
+    autoescape:  true,
+    express:  app
+  }
+)
+
+app.use('/assets', express.static(path.join(__dirname, '/node_modules/govuk-frontend/govuk/assets')))
 
 app.set('view engine', 'njk');
 
