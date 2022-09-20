@@ -1,5 +1,7 @@
 # Personal Data Store hackathon prototype
 
+Created for the PDS Hackathon in September 2022.
+
 ## Running the prototype app
 
 1. Run `npm ci` to install dependencies
