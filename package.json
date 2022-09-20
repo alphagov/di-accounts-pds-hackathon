@@ -17,7 +17,9 @@
     "dev": "npm run build && nodemon ."
   },
   "dependencies": {
+    "@inrupt/solid-client": "^1.23.3",
     "@inrupt/solid-client-authn-node": "^1.12.2",
+    "@inrupt/solid-client-access-grants": "^1.1.0",
     "cookie-parser": "~1.4.4",
     "cookie-session": "^2.0.0",
     "debug": "~2.6.9",

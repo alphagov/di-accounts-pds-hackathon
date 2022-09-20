@@ -8,9 +8,9 @@ import {
 const router = express.Router();
 
 /* All following routes require someone to be logged in first */
-router.use((req: Request, res: Response, next: NextFunction) => {
-  redirectIfNotLoggedIn(req, res, next);
-});
+// router.use((req: Request, res: Response, next: NextFunction) => {
+//   redirectIfNotLoggedIn(req, res, next);
+// });
 
 router.get("/", accountHomeGet);
 
