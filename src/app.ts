@@ -4,7 +4,10 @@ import path from "path";
 import cookieParser from "cookie-parser";
 import logger from "morgan";
 import http from "http";
-import nunjucks from "nunjucks";
+import i18next from "i18next";
+import i18nextMiddleware from "i18next-http-middleware";
+import Backend from "i18next-fs-backend";
+import nunjucks, { Environment } from "nunjucks";
 import cookieSession from "cookie-session";
 
 import { getPort, getSessionKeys } from "./config";
@@ -30,14 +33,69 @@ app.use(
   })
 );
 
+// ============================
+// Mount Routefiles for the App
+// ============================
+
 app.use("/", indexRouter);
 app.use("/login", loginRouter);
 
-nunjucks.configure(["dist/views", "node_modules/govuk-frontend/"], {
-  autoescape: true,
-  express: app,
-});
+// ============================
+// Configure Localisation
+// ============================
+i18next
+  .use(Backend)
+  .use(i18nextMiddleware.LanguageDetector)
+  .init({
+    debug: true,
+    fallbackLng: "en",
+    // lng: "en",
+    preload: ["en", "cy"],
+    supportedLngs: ["en", "cy"],
+    backend: {
+      loadPath: path.join(__dirname, "locales/{{lng}}/{{ns}}.json"),
+    },
+    detection: {
+      lookupCookie: "lng",
+      lookupQuerystring: "lng",
+      order: ["querystring", "header", "cookie"],
+      caches: ["cookie"],
+      ignoreCase: true,
+      cookieSecure: true,
+    },
+  });
+
+
+app.use(i18nextMiddleware.handle(i18next));
+
+function configureNunjucks(expressApp: express.Application): Environment {
+  const nunjucksEnv: nunjucks.Environment = nunjucks.configure(
+    ["dist/views", "node_modules/govuk-frontend/"],
+    {
+      autoescape: true,
+      express: expressApp,
+    }
+  );
+  // eslint-disable-next-line  @typescript-eslint/no-explicit-any
+  nunjucksEnv.addFilter("translate", (key: string, options?: any) => {
+    const translate = i18next.getFixedT("en");
+    return translate(key, options);
+  });
+
+  return nunjucksEnv;
+}
+
+// ============================
+// Configure Nunjucks
+// ============================
+
+configureNunjucks(app);
+
 app.set("view engine", "njk");
+
+// ============================
+// Configure Assets
+// ============================
 
 app.use(
   "/assets",
@@ -46,15 +104,18 @@ app.use(
   )
 );
 
-// Set up server
+// ============================
+// Set up 404 
+// ============================
 
-// catch 404 and forward to error handler
 const notFoundHandler: RequestHandler = (req, res, next) => {
   next(createError(404));
 };
 app.use(notFoundHandler);
 
-// error handler
+// ============================
+// Set up Error Handler
+// ============================
 const errorHandler: ErrorRequestHandler = (err, req, res) => {
   // set locals, only providing error in development
   res.locals.message = err.message;
@@ -65,6 +126,10 @@ const errorHandler: ErrorRequestHandler = (err, req, res) => {
   res.render("error");
 };
 app.use(errorHandler);
+
+// ============================
+// Ports
+// ============================
 
 const port = getPort();
 app.set("port", port);
