@@ -41,9 +41,7 @@ app.set("view engine", "njk");
 
 app.use(
   "/assets",
-  express.static(
-    path.join(__dirname, "/node_modules/govuk-frontend/govuk/assets")
-  )
+  express.static(path.resolve("node_modules/govuk-frontend/govuk/assets"))
 );
 
 // Set up server
