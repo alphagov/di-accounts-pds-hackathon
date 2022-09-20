@@ -4,9 +4,7 @@ import {
   Session,
 } from "@inrupt/solid-client-authn-node";
 
-import { getPort } from "../config";
-
-const port = getPort();
+import { getHostname } from "../config";
 
 export async function loginGet(req: Request, res: Response): Promise<void> {
   res.render("login/start");
@@ -21,7 +19,7 @@ export async function loginPost(req: Request, res: Response): Promise<void> {
     res.redirect(url);
   };
   await session.login({
-    redirectUrl: `http://localhost:${port}/login/callback`,
+    redirectUrl: `${getHostname()}/login/callback`,
     oidcIssuer: "https://login.inrupt.com",
     clientName: "GDS PDS prototype app",
     handleRedirect: redirectToSolidIdentityProvider,
@@ -31,7 +29,7 @@ export async function loginPost(req: Request, res: Response): Promise<void> {
 export async function callbackGet(req: Request, res: Response): Promise<void> {
   const session = await getSessionFromStorage(req.session?.sessionId);
   await session?.handleIncomingRedirect(
-    `http://localhost:${port}${req.originalUrl}`
+    `${getHostname()}${req.originalUrl}`
   );
 
   if (session?.info.isLoggedIn) {
