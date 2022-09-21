@@ -1,17 +1,17 @@
-import express, { Request, Response, NextFunction } from "express";
+import express from "express";
 
 import {
-    requestVouchGet,
-    vouchForSomeoneGet,
-    voucheeYourNameGet,
-    voucheeProvidePhotoGet,
-    voucheeConfirmationGet,
-    voucheeVoucherDetailsGet,
-    voucheeDoneGet,
-    voucheeYourNamePost,
-    voucheeProvidePhotoPost,
-  } from "../controllers/vouch";
-  
+  requestVouchGet,
+  vouchForSomeoneGet,
+  voucheeYourNameGet,
+  voucheeProvidePhotoGet,
+  voucheeConfirmationGet,
+  voucheeVoucherDetailsGet,
+  voucheeDoneGet,
+  voucheeYourNamePost,
+  voucheeProvidePhotoPost,
+} from "../controllers/vouch";
+
 const router = express.Router();
 
 router.get("/request-vouch", requestVouchGet);
