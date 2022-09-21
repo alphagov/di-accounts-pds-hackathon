@@ -7,6 +7,7 @@ import {
   voucheeProvidePhotoGet,
   voucheeConfirmationGet,
   voucheeVoucherDetailsGet,
+  voucheeVoucherDetailsPost,
   voucheeDoneGet,
   voucheeYourNamePost,
   voucheeProvidePhotoPost,
@@ -24,6 +25,8 @@ router.get("/request-vouch/provide-photo", voucheeProvidePhotoGet);
 router.post("/request-vouch/provide-photo", voucheeProvidePhotoPost);
 
 router.get("/request-vouch/voucher-details", voucheeVoucherDetailsGet);
+router.post("/request-vouch/voucher-details", voucheeVoucherDetailsPost);
+
 router.get("/request-vouch/confirmation", voucheeConfirmationGet);
 router.get("/request-vouch/done", voucheeDoneGet);
 
