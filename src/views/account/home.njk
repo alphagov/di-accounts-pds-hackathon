@@ -1,0 +1,46 @@
+{% extends "layouts/account.njk" %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% set pageTitleName = 'account.pages.home.title' | translate %}
+{% set activeNavLink = '/account' %}
+{% set hasProofOfId = true %}
+{% set email = 'something@somewhere.com' %}
+{# Services you've used with your account, hard coded this for now #}
+{% set services = [{
+  name: "Personal tax account",
+  description:"Check your records and manage your payments to HM Revenue and Customs (HMRC).",
+  link: {
+    href: "/personal-tax/home",
+    text: "Go to your personal tax account"
+  },
+  timeLastUsed: "20 June 2022",
+  usesSavedIdentity: true
+}] %}
+
+{% block content %}
+  <h1 class="govuk-heading-xl">{{ 'account.pages.home.title' | translate }}</h1>
+  <p class="govuk-body">{{ 'account.pages.home.signedInStatus' | translate }} <strong>{{ email }}</strong></p>
+  <hr class="govuk-section-break govuk-section-break--m">
+  {% if services %}
+    <section class="govuk-!-margin-bottom-8">
+      <h2 class="govuk-heading-m">{{ 'account.pages.home.servicesHeading' | translate }}</h2>
+      {% for service in services %}
+        <div class="accounts-panel">
+          <h3 class="govuk-heading-s">{{service.name}}</h3>
+          <p class="govuk-body">{{service.description}}</p>
+          <p class="govuk-body"><a class="govuk-link" href="{{service.link.href}}">{{service.link.text}}</a></p>
+          <p class="govuk-body govuk-hint"> Last used: {{service.timeLastUsed}}</p>
+          {% if service.usesSavedIdentity %}
+            <p class="govuk-body govuk-hint">{{'account.pages.home.usesSavedIdentityParagraph' | translate }}</p>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </section>
+  {% endif %}
+
+  <section class="information-box">
+    <h2 class="govuk-heading-m">{{ 'account.pages.home.aboutAccounts.heading' | translate }}</h2>
+    <p class="govuk-body">{{ 'account.pages.home.aboutAccounts.paragraph1' | translate }}</p>
+    <p class="govuk-body">{{ 'account.pages.home.aboutAccounts.paragraph2' | translate }}</p>
+    <p class="govuk-body">{{ 'account.pages.home.aboutAccounts.paragraph3' | translate }}</p>
+  </section>
+{% endblock %}

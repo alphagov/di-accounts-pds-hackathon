@@ -1,0 +1,128 @@
+{
+  "general": {
+    "back": "Back",
+    "continue": "Continue",
+    "change": "Change",
+    "errorTitlePrefix": "Error",
+    "printThisPage": "Print this page",
+    "footer": {
+      "accessibilityStatement": {
+        "pageTitle": "Accessibility statement",
+        "linkText": "Accessibility statement"
+      },
+      "cookies": {
+        "pageTitle": "Cookie Policy",
+        "linkText": "Cookies"
+      },
+      "terms": {
+        "pageTitle": "Terms and conditions",
+        "linkText": "Terms and conditions"
+      },
+      "privacy": {
+        "pageTitle": "Privacy notice",
+        "linkText": "Privacy notice"
+      }
+    },
+    "on": "on",
+    "phaseBanner": {
+      "tag": "beta",
+      "text": "This is a new service – your <a  href=\"/feedback\" class=\"govuk-link\">feedback</a> will help us to improve it."
+    },
+    "postcode": "Postcode",
+    "start": "Start",
+    "end": {
+      "heading": "End of prototype",
+      "description": "You've reached the end of this prototype. Return to the homepage to try another journey",
+      "buttonText": "Return to homepage"
+    }
+  },
+  "account": {
+    "serviceName": "GOV.UK Account",
+    "header": {
+      "homepageHref": "https://www.gov.uk/",
+      "accountLink": "Account home",
+      "accountSettingsLink": "Account settings",
+      "signOutLink": "Sign out"
+    },
+    "pages": {
+      "activity": {
+        "title": "Account activity",
+        "contactUs": "If you see something you do not recognise, <a class=\"govuk-link\" href=\"[contactUsLink]\">contact us</a>."
+      },
+      "home": {
+        "title": "Your GOV.UK account",
+        "header": "Your GOV.UK account",
+        "signedInStatus": "You’re signed in as",
+        "servicesHeading": "Services you sign in to with your GOV.UK account",
+        "usesSavedIdentityParagraph": "This service uses your saved proof of identity",
+        "aboutAccounts": {
+          "heading": "About GOV.UK accounts",
+          "paragraph1": "GOV.UK accounts are new. At the moment you can only use your GOV.UK account with a few services.",
+          "paragraph2": "GOV.UK accounts are currently separate from other government accounts (for example Government Gateway or Universal Credit).",
+          "paragraph3": "In the future, you’ll be able to use your GOV.UK account to sign in to most services on GOV.UK."
+        },
+        "yourProofOfId": {
+          "heading": "Your proof of identity",
+          "link": "See or delete your saved proof of identity",
+          "haveSavedInfo": "You’ve saved your proof of identity to your account. Your account will check it each time a service needs to confirm who you are.",
+          "haveNotSavedInfo1": "There’s no proof of identity information saved to your GOV.UK account.",
+          "haveNotSavedInfo2": "You’ll be able to prove your identity and save it next time you use a service that needs to check who you are."
+        }
+      },
+      "settings": {
+        "title": "GOV.UK account settings",
+        "accountDetails": "Your sign in details",
+        "summaryList": {
+          "email": "Email address",
+          "password": "Password",
+          "phoneNumber": "Phone number",
+          "changeAction": "Change"
+        },
+        "yourAccountActivity": {
+          "heading": "View your account activity",
+          "link": "View your account activity",
+          "info": "See when you’ve signed in and how your account has used your saved information."
+        },
+        "deleteAccount": {
+          "heading": "Delete your GOV.UK account",
+          "link": "Delete your GOV.UK account",
+          "info": "This will permanently delete your GOV.UK account. You’ll no longer be able to sign in to the services you’ve used with your account."
+        },
+        "deletedProofOfIdSuccess": "You’ve deleted your proof of identity"
+      },
+      "yourProofOfId": {
+        "title": "Your proof of identity",
+        "paragraph1": "Your GOV.UK account proves your identity with information you’ve provided.",
+        "paragraph2": "Your account checks this information to prove your identity every time you use a service that requires it.",
+        "summaryListTitle": "Information you’ve provided to prove your identity",
+        "deleteInformationLink": "Delete your identity information from your account",
+        "savedOn": "Saved on [date]",
+        "paragraph3": "You may need to answer some more identity  questions next time if:",
+        "listItem1": "your saved information is out of date",
+        "listItem2": "a service needs extra information to check who you are, for security reasons",
+        "servicesUsingIdHeading": "How you’ve used your saved proof of identity",
+        "servicesUsingIdParagraph": "Your GOV.UK account has confirmed your identity to the following services.",
+        "yourAccountActivityLink": "You can <a href=\"/account/settings/activity\">view all of your account activity</a>."
+      },
+      "noSavedIdentity": {
+        "heading": "You do not currently have saved identity credentials",
+        "paragraph1": "You will need to do a full identity check next time you use a relevant government service. Or you can do them now to save time later"
+      },
+      "deleteProofOfId": {
+        "title": "Delete the information you use to prove your identity",
+        "paragraph1": "Confirm you want to permanently delete the information your GOV.UK account uses to prove your identity. This will not delete your account.",
+        "paragraph2": "You will need to go through the process of proving your identity next time you use a service that requires it.",
+        "buttonText": "Delete identity information",
+        "cancelLink": "Do not delete your information"
+      },
+      "accessManagement": {
+        "title": "Access Management",
+        "consentQuestion": "Do you agree?",
+        "hint": "This will authorise information moving around",
+        "affirmative": "Yes I give permission",
+        "negative": "No I deny permission",
+        "buttonText": "Submit"
+      }
+    }
+  }
+}
