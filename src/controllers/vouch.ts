@@ -46,14 +46,18 @@ export async function voucheeProvidePhotoPost(
   const imageName = `${uuidv4()}.jpg`;
   await download("https://thispersondoesnotexist.com/image", imageName);
   if (req.session) {
-    req.session.photoUrl = `${getHostname}imagePath`;
+    req.session.photoUrl = `${getHostname()}/images/${imageName}`;
   }
   res.redirect("/vouch/request-vouch/confirmation");
 }
 
 // Confirmation page
 export function voucheeConfirmationGet(req: Request, res: Response): void {
-  res.render("vouch/request-vouch/confirmation");
+  if (req.session) {
+    res.render("vouch/request-vouch/confirmation", {
+      imageUrl: req.session.photoUrl,
+    });
+  }
 }
 
 // Journey completion page
