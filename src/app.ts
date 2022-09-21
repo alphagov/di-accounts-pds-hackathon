@@ -14,6 +14,7 @@ import { getPort, getSessionKeys } from "./config";
 
 import indexRouter from "./routes/index";
 import accountRouter from "./routes/account";
+import vouchRouter from "./routes/vouch";
 import loginRouter from "./routes/login";
 
 const app: express.Application = express();
@@ -41,6 +42,7 @@ app.use(
 app.use("/", indexRouter);
 app.use("/login", loginRouter);
 app.use("/account", accountRouter);
+app.use("/vouch", vouchRouter);
 
 // ============================
 // Configure Localisation
