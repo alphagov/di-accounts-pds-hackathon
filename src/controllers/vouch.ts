@@ -9,10 +9,6 @@ export function requestVouchGet(req: Request, res: Response): void {
   res.render("govuk/request-vouch");
 }
 
-export function requestVouchPost(req: Request, res: Response): void {
-  res.redirect("/vouch/request-a-vouch/your-name");
-}
-
 // Get Name
 export function voucheeYourNameGet(req: Request, res: Response): void {
   res.render("vouch/request-vouch/your-name");
