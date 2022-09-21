@@ -29,9 +29,6 @@
           <p class="govuk-body">{{service.description}}</p>
           <p class="govuk-body"><a class="govuk-link" href="{{service.link.href}}">{{service.link.text}}</a></p>
           <p class="govuk-body govuk-hint"> Last used: {{service.timeLastUsed}}</p>
-          {% if service.usesSavedIdentity %}
-            <p class="govuk-body govuk-hint">{{'account.pages.home.usesSavedIdentityParagraph' | translate }}</p>
-          {% endif %}
         </div>
       {% endfor %}
     </section>
@@ -39,7 +36,7 @@
   <section class="accounts-panel">
     <h2 class="govuk-heading-m">Ask someone to confirm your identity (‘vouching’)</h2>
     <p class="govuk-body">
-      Someone who knows you can confirm who you are, if you need to prove your identity to a government service and do not have identity documents like a passport. This is known as ‘vouching’.
+      You can ask someone who knows you to confirm your identity, if you need to prove who you are to a government service and do not have identity documents like a passport. This is known as ‘vouching’.
     </p>
     <p class="govuk-body">
       <a class="govuk-link" href="/vouch/request-vouch">Ask someone to vouch for your identity</a>
