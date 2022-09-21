@@ -12,10 +12,11 @@ import {
     voucheeProvidePhotoPost,
   } from "../controllers/vouch";
   
-  const router = express.Router();
+const router = express.Router();
 
 router.get("/request-vouch", requestVouchGet);
 router.get("/vouch-for-someone", vouchForSomeoneGet);
+
 router.get("/request-vouch/your-name", voucheeYourNameGet);
 router.post("/request-vouch/your-name", voucheeYourNamePost);
 
