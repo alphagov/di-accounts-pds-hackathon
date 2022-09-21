@@ -21,3 +21,18 @@ export function getHostname() {
       : `localhost:${getPort()}`;
   return `${getProtocol()}://${hostname}`;
 }
+
+export function getJwtSigningKey() {
+  // This is a prototype, so we're not worried about the security of our key
+  return "not-a-secret-key";
+}
+
+export function getClientId(environment?: string) {
+  let hostname: string;
+  if (environment && environment === "production") {
+    hostname = `https://${getDeployedDomain()}`;
+  } else {
+    hostname = getHostname();
+  }
+  return `${hostname}/info/id`;
+}

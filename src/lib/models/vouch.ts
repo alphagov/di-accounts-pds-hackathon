@@ -1,7 +1,9 @@
-export type Url = string;
-export type WebId = Url;
-
-export type Name = string;
+import {
+  Url,
+  WebId,
+  Name,
+  Base64EncodedString
+} from "./common"
 
 export enum VouchRequestStatusStates {
   Successful = "successful",
@@ -14,7 +16,7 @@ export interface VouchRequest {
   vouchee: WebId;
   status: Url;
   name: Name;
-  photo: Url;
+  photo: Base64EncodedString;
   issued: Date;
   expires: Date;
   id: String;
