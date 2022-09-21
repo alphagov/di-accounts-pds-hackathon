@@ -24,3 +24,17 @@ export interface VouchRequestStatus {
   status: VouchRequestStatusStates;
   vouchRequest: Url;
 }
+
+export interface VouchedFor {
+  vouchee: WebId;
+  issued: Date;
+  vouchResource: Url;
+  vouchRequest: Url;
+}
+
+export interface RecievedVouchFrom {
+  voucher: WebId;
+  issued: Date;
+  vouchForResource: Url;
+  vouchRequest: Url;
+}
