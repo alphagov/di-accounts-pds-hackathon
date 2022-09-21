@@ -14,6 +14,7 @@ import { getPort, getSessionKeys } from "./config";
 
 import indexRouter from "./routes/index";
 import accountRouter from "./routes/account";
+import emailsRouter from "./routes/emails";
 import vouchRouter from "./routes/vouch";
 import loginRouter from "./routes/login";
 
@@ -43,6 +44,7 @@ app.use("/", indexRouter);
 app.use("/login", loginRouter);
 app.use("/account", accountRouter);
 app.use("/vouch", vouchRouter);
+app.use("/emails", emailsRouter);
 
 // ============================
 // Configure Localisation
