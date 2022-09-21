@@ -30,6 +30,7 @@ export function voucheeYourNameGet(req: Request, res: Response): void {
 
 export function voucheeYourNamePost(req: Request, res: Response): void {
   if (req.session) {
+    console.log(req.body);
     req.session.fullName = req.body.fullName;
   }
   res.redirect("/vouch/request-vouch/provide-photo");
@@ -56,6 +57,7 @@ export function voucheeConfirmationGet(req: Request, res: Response): void {
   if (req.session) {
     res.render("vouch/request-vouch/confirmation", {
       imageUrl: req.session.photoUrl,
+      fullName: req.session.fullName,
     });
   }
 }
