@@ -29,9 +29,6 @@
           <p class="govuk-body">{{service.description}}</p>
           <p class="govuk-body"><a class="govuk-link" href="{{service.link.href}}">{{service.link.text}}</a></p>
           <p class="govuk-body govuk-hint"> Last used: {{service.timeLastUsed}}</p>
-          {% if service.usesSavedIdentity %}
-            <p class="govuk-body govuk-hint">{{'account.pages.home.usesSavedIdentityParagraph' | translate }}</p>
-          {% endif %}
         </div>
       {% endfor %}
     </section>
