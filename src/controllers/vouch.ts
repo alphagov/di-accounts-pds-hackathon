@@ -30,7 +30,6 @@ export function voucheeYourNameGet(req: Request, res: Response): void {
 
 export function voucheeYourNamePost(req: Request, res: Response): void {
   if (req.session) {
-    console.log(req.body);
     req.session.fullName = req.body.fullName;
   }
   res.redirect("/vouch/request-vouch/provide-photo");
@@ -49,6 +48,18 @@ export async function voucheeProvidePhotoPost(
   if (req.session) {
     req.session.photoUrl = `${getHostname()}/images/${imageName}`;
   }
+  res.redirect("/vouch/request-vouch/voucher-details");
+}
+
+// Who is vouching for you?
+export function voucheeVoucherDetailsGet(req: Request, res: Response): void {
+  res.render("vouch/request-vouch/voucher-details");
+}
+
+export function voucheeVoucherDetailsPost(req: Request, res: Response): void {
+  if (req.session) {
+    req.session.voucher = req.body.voucher;
+  }
   res.redirect("/vouch/request-vouch/confirmation");
 }
 
@@ -58,6 +69,7 @@ export function voucheeConfirmationGet(req: Request, res: Response): void {
     res.render("vouch/request-vouch/confirmation", {
       imageUrl: req.session.photoUrl,
       fullName: req.session.fullName,
+      voucher: req.session.voucher,
     });
   }
 }
@@ -73,8 +85,4 @@ export function voucheeDoneGet(req: Request, res: Response): void {
 
 export function vouchForSomeoneGet(req: Request, res: Response): void {
   res.render("govuk/vouch-for-someone");
-}
-
-export function voucheeVoucherDetailsGet(req: Request, res: Response): void {
-  res.render("vouch/request-vouch/voucher-details");
 }
