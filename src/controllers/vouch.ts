@@ -3,7 +3,7 @@ import fetch from "node-fetch";
 import path from "path";
 import { Request, Response } from "express";
 import { v4 as uuidv4 } from "uuid";
-import { Url } from "../lib/models/vouch";
+import { Url } from "../lib/models/common";
 import { getHostname } from "../config";
 
 async function download(url: Url, fileName: string) {
