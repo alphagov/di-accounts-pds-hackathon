@@ -12,10 +12,10 @@
         Name
       </dt>
       <dd class="govuk-summary-list__value">
-        Jane Doe
+        {{ fullName }}
       </dd>
       <dd class="govuk-summary-list__actions">
-        <a class="govuk-link" href="#">
+        <a class="govuk-link" href="/vouch/request-vouch/your-name">
           Change<span class="govuk-visually-hidden"> name</span>
         </a>
       </dd>
@@ -25,10 +25,10 @@
         Photo
       </dt>
       <dd class="govuk-summary-list__value">
-        <img src="asdfplaceholder.jpeg" alt="Face" width="150" height="150">
+        <img src={{ imageUrl }} alt="Face" width="150" height="150">
       </dd>
       <dd class="govuk-summary-list__actions">
-        <a class="govuk-link" href="#">
+        <a class="govuk-link" href="/vouch/request-vouch/provide-photo">
           Change<span class="govuk-visually-hidden"> photo</span>
         </a>
       </dd>

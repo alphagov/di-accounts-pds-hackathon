@@ -9,7 +9,7 @@ import i18next from "i18next";
 import i18nextMiddleware from "i18next-http-middleware";
 import Backend from "i18next-fs-backend";
 import nunjucks, { Environment } from "nunjucks";
-  
+
 import { getPort, getSessionKeys } from "./config";
 
 import indexRouter from "./routes/index";
@@ -69,7 +69,6 @@ i18next
     },
   });
 
-
 app.use(i18nextMiddleware.handle(i18next));
 
 function configureNunjucks(expressApp: express.Application): Environment {
@@ -106,11 +105,11 @@ app.use(
 );
 
 // ============================
-// Set up 404 
+// Set up 404
 // ============================
 
 const notFoundHandler: RequestHandler = (req, res, next) => {
-    next(createError(404));
+  next(createError(404));
 };
 app.use(notFoundHandler);
 

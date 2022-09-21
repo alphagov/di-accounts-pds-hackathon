@@ -9,7 +9,7 @@
     "format": "prettier --ignore-path .prettierignore --write \"**/*.+(js|ts|json)\"",
     "clean": "rm -rf dist",
     "build-sass": "rm -rf dist/public/stylesheets/application.css && sass --no-source-map src/public/stylesheets/application.scss dist/public/stylesheets/application.css --style compressed",
-    "copy-assets": "mkdir -p dist/public/javascripts/govuk-frontend && cp node_modules/govuk-frontend/govuk/all.js dist/public/javascripts/govuk-frontend && cp src/public/javascripts/application.js dist/public/javascripts && mkdir -p dist/locales && cp -R src/locales/* dist/locales",
+    "copy-assets": "mkdir -p dist/public/javascripts/govuk-frontend && cp node_modules/govuk-frontend/govuk/all.js dist/public/javascripts/govuk-frontend && cp src/public/javascripts/application.js dist/public/javascripts && mkdir -p dist/locales && cp -R src/locales/* dist/locales && mkdir -p dist/public/images",
     "copy-views": "mkdir -p dist/views && cp -R src/views/* dist/views",
     "build": "npm run clean && npm run build-sass && npm run copy-assets && npm run copy-views && tsc",
     "test": "npm run lint",
@@ -29,8 +29,10 @@
     "i18next-fs-backend": "^1.1.5",
     "i18next-http-middleware": "^3.2.1",
     "morgan": "~1.9.1",
+    "node-fetch": "^2.6.1",
     "nunjucks": "^3.2.3",
-    "typescript": "^4.8.2"
+    "typescript": "^4.8.2",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "@types/cookie-parser": "^1.4.3",
@@ -39,6 +41,7 @@
     "@types/http-errors": "^1.8.2",
     "@types/i18next-fs-backend": "^1.1.2",
     "@types/morgan": "^1.9.3",
+    "@types/node-fetch": "^2.6.2",
     "@types/nunjucks": "^3.2.1",
     "@typescript-eslint/eslint-plugin": "^5.36.2",
     "@typescript-eslint/parser": "^5.36.2",
