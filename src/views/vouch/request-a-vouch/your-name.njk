@@ -1,21 +1,15 @@
 {% extends "layouts/base.njk" %}
 
 {% block content %}
-  <h1 class="govuk-heading-xl">Your full name</h1>
-
-      <form class="form" action="/provide-photo" method="post">
-
-      <div class="govuk-form-group">
-        <h2 class="govuk-label-wrapper">
-          <label class="govuk-label govuk-label--xl" for="vouchee-name">
-            Your full name
-          </label>
-        </h2>
-        <input class="govuk-input govuk-!-width-two-thirds" id="vouchee-name" name="vouchee-name" type="text">
-      </div>
-
-
-      <button class="govuk-button" data-module="govuk-button">Continue</button>
-
-    </form>
+  <form class="form" action="/your-name" method="post">
+    <div class="govuk-form-group">
+      <h1 class="govuk-label-wrapper">
+        <label class="govuk-label govuk-label--xl" for="vouchee-name">
+          Your full name
+        </label>
+      </h1>
+      <input class="govuk-input govuk-!-width-two-thirds" id="vouchee-name" name="vouchee-name" type="text">
+    </div>
+    <button class="govuk-button" data-module="govuk-button">Continue</button>
+  </form>
 {% endblock %}

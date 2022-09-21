@@ -2,4 +2,13 @@
 
 {% block content %}
   <h1 class="govuk-heading-xl">Enter details of the person vouching for you</h1>
+   <form class="form" action="/voucher-details" method="post">
+    <div class="govuk-form-group">
+      <label class="govuk-label govuk-label--s" for="voucher-webid">
+        WebID
+      </label>
+      <input class="govuk-input govuk-!-width-two-thirds" id="voucher-webid" name="voucher-webid" type="text">
+    </div>
+    <button class="govuk-button" data-module="govuk-button">Continue</button>
+  </form>
 {% endblock %}
