@@ -7,13 +7,12 @@ import {
 import { getHostname } from "../config";
 
 export async function loginGet(req: Request, res: Response): Promise<void> {
-  res.render("login/start");
-}
-
-export async function loginPost(req: Request, res: Response): Promise<void> {
   const session = new Session();
-  if (req.session != undefined) {
+  if (req.session) {
     req.session.sessionId = session.info.sessionId;
+    if (req.query.returnUri) {
+      req.session.returnUri = req.query.returnUri;
+    }
   }
   const redirectToSolidIdentityProvider = (url: string) => {
     res.redirect(url);
@@ -28,11 +27,15 @@ export async function loginPost(req: Request, res: Response): Promise<void> {
 
 export async function callbackGet(req: Request, res: Response): Promise<void> {
   const session = await getSessionFromStorage(req.session?.sessionId);
-  await session?.handleIncomingRedirect(
-    `${getHostname()}${req.originalUrl}`
-  );
+  await session?.handleIncomingRedirect(`${getHostname()}${req.originalUrl}`);
 
   if (session?.info.isLoggedIn) {
-    res.render("login/success", { webId: session?.info.webId });
+    if (req.session && req.session.returnUri) {
+      const { returnUri } = req.session;
+      delete req.session.returnUri;
+      res.redirect(returnUri);
+    } else {
+      res.redirect("/");
+    }
   }
 }
