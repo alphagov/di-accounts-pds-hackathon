@@ -1,4 +1,7 @@
 {% extends "layouts/base.njk" %}
+{% block beforeContent %}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
 
 {% block content %}
   <h1 class="govuk-heading-xl">Enter details of the person vouching for you</h1>
