@@ -25,8 +25,8 @@
     },
     "on": "on",
     "phaseBanner": {
-      "tag": "beta",
-      "text": "This is a new service – your <a  href=\"/feedback\" class=\"govuk-link\">feedback</a> will help us to improve it."
+      "tag": "prototype",
+      "text": "This is a prototype not a real service."
     },
     "postcode": "Postcode",
     "start": "Start",
