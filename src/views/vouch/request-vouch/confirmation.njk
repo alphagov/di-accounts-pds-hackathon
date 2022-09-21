@@ -1,5 +1,9 @@
 {% extends "layouts/base.njk" %}
 
+{% block beforeContent %}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
 {% block content %}
   <h1 class="govuk-heading-xl">Please confirm your details</h1>
 {% endblock %}
