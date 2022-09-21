@@ -9,7 +9,7 @@
   <dl class="govuk-summary-list govuk-!-margin-bottom-9">
     <div class="govuk-summary-list__row">
       <dt class="govuk-summary-list__key">
-        Name
+        Your full name
       </dt>
       <dd class="govuk-summary-list__value">
         {{ fullName }}
@@ -22,13 +22,26 @@
     </div>
     <div class="govuk-summary-list__row">
       <dt class="govuk-summary-list__key">
-        Photo
+        Your photo
       </dt>
       <dd class="govuk-summary-list__value">
         <img src={{ imageUrl }} alt="Face" width="150" height="150">
       </dd>
       <dd class="govuk-summary-list__actions">
         <a class="govuk-link" href="/vouch/request-vouch/provide-photo">
+          Change<span class="govuk-visually-hidden"> photo</span>
+        </a>
+      </dd>
+    </div>
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Who is vouching for you
+      </dt>
+      <dd class="govuk-summary-list__value">
+        {{ voucher }}
+      </dd>
+      <dd class="govuk-summary-list__actions">
+        <a class="govuk-link" href="/vouch/request-vouch/voucher-details">
           Change<span class="govuk-visually-hidden"> photo</span>
         </a>
       </dd>
