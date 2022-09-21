@@ -13,6 +13,7 @@ import nunjucks, { Environment } from "nunjucks";
 import { getPort, getSessionKeys } from "./config";
 
 import indexRouter from "./routes/index";
+import infoRouter from "./routes/info";
 import accountRouter from "./routes/account";
 import emailsRouter from "./routes/emails";
 import vouchRouter from "./routes/vouch";
@@ -42,6 +43,7 @@ app.use(
 
 app.use("/", indexRouter);
 app.use("/login", loginRouter);
+app.use("/info", infoRouter);
 app.use("/account", accountRouter);
 app.use("/vouch", vouchRouter);
 app.use("/emails", emailsRouter);
