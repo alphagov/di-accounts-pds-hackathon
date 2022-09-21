@@ -39,6 +39,11 @@ export function voucheeConfirmationGet(req: Request, res: Response): void {
   res.render("vouch/request-a-vouch/confirmation");
 }
 
+// Journey completion page
+export function voucheeDoneGet(req: Request, res: Response): void {
+  res.render("vouch/request-a-vouch/done");
+}
+
 // ======================================================
 // Journey 2 Review and vouch for someone
 // ======================================================
