@@ -15,28 +15,28 @@ export function requestVouchPost(req: Request, res: Response): void {
 
 // Get Name
 export function voucheeYourNameGet(req: Request, res: Response): void {
-  res.render("vouch/request-a-vouch/your-name");
+  res.render("vouch/request-vouch/your-name");
 }
 
 export function voucheeYourNamePost(req:Request, res:Response): void {
   if (req.session) {
     req.session.fullName = req.body.fullName;
   }
-  res.redirect("/vouch/request-a-vouch/provide-photo");
+  res.redirect("/vouch/request-vouch/provide-photo");
 }
 
 // Get Photo
 export function voucheeProvidePhotoGet(req: Request, res: Response): void {
-  res.render("vouch/request-a-vouch/provide-photo");
+  res.render("vouch/request-vouch/provide-photo");
 }
 
 export function voucheeProvidePhotoPost(req: Request, res: Response): void {
-  res.redirect("/vouch/request-a-vouch/confirmation");
+  res.redirect("/vouch/request-vouch/confirmation");
 }
 
 // Confirmation page
 export function voucheeConfirmationGet(req: Request, res: Response): void {
-  res.render("vouch/request-a-vouch/confirmation");
+  res.render("vouch/request-vouch/confirmation");
 }
 
 // Journey completion page
@@ -53,5 +53,5 @@ export function vouchForSomeoneGet(req: Request, res: Response): void {
 }
 
 export function voucheeVoucherDetailsGet(req: Request, res: Response): void {
-  res.render("vouch/request-a-vouch/voucher-details");
+  res.render("vouch/request-vouch/voucher-details");
 }
