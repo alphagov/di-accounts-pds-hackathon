@@ -98,7 +98,11 @@ export function useSavedProofOfIdGet(req: Request, res: Response): void {
 
 // Pick vouchee out of a line-up
 export function confirmLikenessGet(req: Request, res: Response): void {
-  res.render("vouch/vouch-for-someone/confirm-likeness");
+  if (req.session) {
+    res.render("vouch/vouch-for-someone/confirm-likeness", {
+      voucherName: req.session.voucherName,
+    });
+  }
 }
 
 export function confirmLikenessPost(req: Request, res: Response): void {
