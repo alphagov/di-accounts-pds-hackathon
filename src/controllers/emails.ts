@@ -9,9 +9,7 @@ export function youHaveBeenVouchedForGet(req: Request, res: Response): void {
 }
 
 export function voucherRequestGet(req: Request, res: Response): void {
-  const voucherName = req.params.voucherName
-    ? req.params.voucherName
-    : "Person";
+  const voucherName = req.query.voucherName ? req.query.voucherName : "Person";
   if (req.session) {
     req.session.voucherName = voucherName;
   }

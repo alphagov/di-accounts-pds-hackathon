@@ -1,31 +1,29 @@
 {% extends "layouts/email.njk" %}
 
-{% set subjectLine = "Person wants you to confirm their identity" %}
+{% set subjectLine %} {{ voucherName }} wants you to confirm their identity {% endset %}
 
 {% block emailBody %}
-  <p class="govuk-body"><b>Person wants you to confirm their identity</b></p>
+  <p class="govuk-body"><b>{{ voucherName }} wants you to confirm their identity</b></p>
 
-<p class="govuk-body">Person would like to sign in to a government service. Before they can do this, they need to confirm their identity.<br><br>
+<p class="govuk-body">{{ voucherName }} would like to sign in to a government service. Before they can do this, they need to confirm their identity.<br><br>
 
-Person would like you to confirm their identity for them. </p>
+{{ voucherName }} would like you to confirm their identity for them. </p>
 
 <p class="govuk-body"><b>What you need to do</b></p>
 
 <p class="govuk-body"> We’ll ask you to:<br>
 <ul class="govuk-list govuk-list--bullet">
 <li>confirm your identity by entering your passport or driving licence details, or by taking other forms of ID to a Post Office</li>
-<li>check that the details Person has given for you, including your profession, are correct</li>
-<li>look at 6 photos and confirm which photo is of Person</li>
+<li>look at 6 photos and confirm which photo is of {{ voucherName }}</li>
 
 </ul>
 
 <p class="govuk-body">It should take about 10 minutes. <br><br>
 
 <b>How to do it</b> <br><br>
-Go to <a href='/8-voucherstart' class="govuk-link">www.gov.uk/confirm-identity </a> and enter your unique reference number: OIDV56789<br><br>
+Go to <a href='/vouch/vouch-for-someone' class="govuk-link">www.gov.uk/confirm-identity </a><br><br>
 
-You have 2 weeks to confirm Person’s identity. After 2 weeks, your unique reference number will no longer work. <br><br>
-
+You have 2 weeks to confirm {{ voucherName }}’s identity. After 2 weeks this request will expire and you will not be able to confirm their identity.<br><br>
 
 Digital Identity<br><br>
 GOV.UK<br><br>
