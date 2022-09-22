@@ -2,8 +2,8 @@
 
 {% block content %}
 <form class="form" action="/vouch/vouch-for-someone/confirm-details" method="post">
-  <h1 class="govuk-heading-xl">Confirm Person's details</h1>
-  <p class="govuk-body">Check that Person's details are correct.</p>
+  <h1 class="govuk-heading-xl">Confirm {{ voucherName }}'s details</h1>
+  <p class="govuk-body">Check that {{ voucherName }}'s details are correct.</p>
 
   <dl class="govuk-summary-list govuk-!-margin-bottom-9">
     <div class="govuk-summary-list__row">
@@ -11,7 +11,7 @@
         Full name
       </dt>
       <dd class="govuk-summary-list__value">
-        Person Name
+        {{ voucherName }}
       </dd>
     </div>
 
@@ -21,25 +21,6 @@
       </dt>
       <dd class="govuk-summary-list__value">
         <img src="https://thispersondoesnotexist.com/image" alt="Face" width="150" height="150">
-      </dd>
-    </div>
-
-    <div class="govuk-summary-list__row">
-      <dt class="govuk-summary-list__key">
-        Date of birth
-      </dt>
-      <dd class="govuk-summary-list__value">
-        01/01/1990
-      </dd>
-    </div>
-
-    <div class="govuk-summary-list__row">
-      <dt class="govuk-summary-list__key">
-        Address
-      </dt>
-      <dd class="govuk-summary-list__value">
-        <p class="govuk-body">
-          1 High Street<br>Watford WD1 1AA</p>
       </dd>
     </div>
   </dl>
@@ -53,7 +34,7 @@
     </strong>
   </div>
   <p class="govuk-body">I confirm that to the best of my knowledge the information I have provided is correct and complete.</p>
-  <p class="govuk-body">I confirm that I have known Person Name for at least 2 years. </p>
+  <p class="govuk-body">I confirm that I have known {{ voucherName }} for at least 2 years. </p>
 
   <div>
     <button class="govuk-button" data-module="govuk-button">Confirm</button>

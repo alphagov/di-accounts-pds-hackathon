@@ -111,7 +111,11 @@ export function confirmLikenessPost(req: Request, res: Response): void {
 
 // Confirm vouchee details and read disclaimer
 export function confirmDetailsGet(req: Request, res: Response): void {
-  res.render("vouch/vouch-for-someone/confirm-details");
+  if (req.session) {
+    res.render("vouch/vouch-for-someone/confirm-details", {
+      voucherName: req.session.voucherName,
+    });
+  }
 }
 
 export function confirmDetailsPost(req: Request, res: Response): void {
