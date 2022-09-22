@@ -84,7 +84,11 @@ export function voucheeDoneGet(req: Request, res: Response): void {
 // ======================================================
 
 export function vouchForSomeoneGet(req: Request, res: Response): void {
-  res.render("govuk/vouch-for-someone");
+  if (req.session) {
+    res.render("govuk/vouch-for-someone", {
+      voucherName: req.session.voucherName,
+    });
+  }
 }
 
 // Identity confirmation page after logging in to a GOV.UK account
