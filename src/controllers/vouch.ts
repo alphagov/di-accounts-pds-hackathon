@@ -80,7 +80,9 @@ export function voucheeConfirmationPost(req: Request, res: Response): void {
 
 // Journey completion page
 export function voucheeDoneGet(req: Request, res: Response): void {
-  res.render("vouch/request-vouch/done");
+  if (req.session) {
+    res.render("vouch/request-vouch/done", { voucher: req.session.voucher });
+  }
 }
 
 // ======================================================
