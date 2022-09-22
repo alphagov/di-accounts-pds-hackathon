@@ -74,6 +74,10 @@ export function voucheeConfirmationGet(req: Request, res: Response): void {
   }
 }
 
+export function voucheeConfirmationPost(req: Request, res: Response): void {
+  res.redirect("/vouch/request-vouch/done");
+}
+
 // Journey completion page
 export function voucheeDoneGet(req: Request, res: Response): void {
   res.render("vouch/request-vouch/done");

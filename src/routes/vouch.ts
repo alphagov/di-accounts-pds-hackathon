@@ -6,6 +6,7 @@ import {
   voucheeYourNameGet,
   voucheeProvidePhotoGet,
   voucheeConfirmationGet,
+  voucheeConfirmationPost,
   voucheeVoucherDetailsGet,
   voucheeVoucherDetailsPost,
   voucheeDoneGet,
@@ -34,6 +35,8 @@ router.get("/request-vouch/voucher-details", voucheeVoucherDetailsGet);
 router.post("/request-vouch/voucher-details", voucheeVoucherDetailsPost);
 
 router.get("/request-vouch/confirmation", voucheeConfirmationGet);
+router.post("/request-vouch/confirmation", voucheeConfirmationPost);
+
 router.get("/request-vouch/done", voucheeDoneGet);
 
 router.get(
