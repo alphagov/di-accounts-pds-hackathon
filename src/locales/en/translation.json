@@ -124,5 +124,11 @@
         "buttonText": "Submit"
       }
     }
+  },
+  "identity": {
+    "useSavedIdentity": {
+      "heading": "Your identity has been confirmed",
+      "paragraph1": "You can now continue to vouch for someone."
+    }
   }
 }

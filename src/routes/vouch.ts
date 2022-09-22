@@ -11,6 +11,10 @@ import {
   voucheeDoneGet,
   voucheeYourNamePost,
   voucheeProvidePhotoPost,
+  confirmLikenessGet,
+  confirmDetailsGet,
+  voucherEndGet,
+  useSavedProofOfIdGet,
 } from "../controllers/vouch";
 
 const router = express.Router();
@@ -29,5 +33,11 @@ router.post("/request-vouch/voucher-details", voucheeVoucherDetailsPost);
 
 router.get("/request-vouch/confirmation", voucheeConfirmationGet);
 router.get("/request-vouch/done", voucheeDoneGet);
+
+router.get("/vouch-for-someone/use-saved-proof-of-identity", useSavedProofOfIdGet);
+router.get("/vouch-for-someone/confirm-likeness", confirmLikenessGet);
+router.get("/vouch-for-someone/confirm-details", confirmDetailsGet);
+router.get("/vouch-for-someone/done", voucherEndGet);
+
 
 export default router;
