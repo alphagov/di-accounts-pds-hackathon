@@ -86,7 +86,7 @@ export function voucheeDoneGet(req: Request, res: Response): void {
 export function vouchForSomeoneGet(req: Request, res: Response): void {
   if (req.session) {
     res.render("govuk/vouch-for-someone", {
-      voucherName: req.session.voucherName,
+      voucheeName: req.session.voucheeName,
     });
   }
 }
@@ -100,7 +100,7 @@ export function useSavedProofOfIdGet(req: Request, res: Response): void {
 export function confirmLikenessGet(req: Request, res: Response): void {
   if (req.session) {
     res.render("vouch/vouch-for-someone/confirm-likeness", {
-      voucherName: req.session.voucherName,
+      voucheeName: req.session.voucheeName,
     });
   }
 }
@@ -113,7 +113,7 @@ export function confirmLikenessPost(req: Request, res: Response): void {
 export function confirmDetailsGet(req: Request, res: Response): void {
   if (req.session) {
     res.render("vouch/vouch-for-someone/confirm-details", {
-      voucherName: req.session.voucherName,
+      voucheeName: req.session.voucheeName,
     });
   }
 }
@@ -126,7 +126,7 @@ export function confirmDetailsPost(req: Request, res: Response): void {
 export function voucherEndGet(req: Request, res: Response): void {
   if (req.session) {
     res.render("vouch/vouch-for-someone/done", {
-      voucherName: req.session.voucherName,
+      voucheeName: req.session.voucheeName,
     });
   }
 }
