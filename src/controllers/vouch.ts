@@ -87,7 +87,6 @@ export function vouchForSomeoneGet(req: Request, res: Response): void {
   res.render("govuk/vouch-for-someone");
 }
 
-
 // Identity confirmation page after logging in to a GOV.UK account
 export function useSavedProofOfIdGet(req: Request, res: Response): void {
   res.render("vouch/vouch-for-someone/use-saved-proof-of-identity");
@@ -96,6 +95,10 @@ export function useSavedProofOfIdGet(req: Request, res: Response): void {
 // Pick vouchee out of a line-up
 export function confirmLikenessGet(req: Request, res: Response): void {
   res.render("vouch/vouch-for-someone/confirm-likeness");
+}
+
+export function confirmLikenessPost(req: Request, res: Response): void {
+  res.redirect("/vouch/vouch-for-someone/confirm-details");
 }
 
 // Confirm vouchee details and read disclaimer
