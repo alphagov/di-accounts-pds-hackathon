@@ -106,6 +106,10 @@ export function confirmDetailsGet(req: Request, res: Response): void {
   res.render("vouch/vouch-for-someone/confirm-details");
 }
 
+export function confirmDetailsPost(req: Request, res: Response): void {
+  res.redirect("/vouch/vouch-for-someone/done");
+}
+
 // End of voucher journey
 export function voucherEndGet(req: Request, res: Response): void {
   res.render("vouch/vouch-for-someone/done");
