@@ -1,0 +1,60 @@
+{% extends "layouts/base.njk" %}
+
+{% block content %}
+
+<form class="form" action="/vouch/vouch-for-someone/confirm-details" method="post">
+  <div class="govuk-form-group">
+    <fieldset class="govuk-fieldset">
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+        <h1 class="govuk-fieldset__heading">
+          Which of these photos is of Person?
+        </h1>
+      </legend>
+      <p class="govuk-body">Select the photo of Person.</p>
+
+      <div class="govuk-radios" data-module="govuk-radios">
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="which-face" name="which-face" type="radio" value="face1">
+          <label class="govuk-label govuk-radios__label" for="which-face">
+            <img src="https://thispersondoesnotexist.com/image" alt="Face" width="150" height="150">
+          </label>
+        </div>
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="which-face-2" name="which-face" type="radio" value="face2">
+          <label class="govuk-label govuk-radios__label" for="which-face-2">
+            <img src="https://thispersondoesnotexist.com/image" alt="Face" width="150" height="150">
+          </label>
+        </div>
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="which-face-3" name="which-face" type="radio" value="face3">
+          <label class="govuk-label govuk-radios__label" for="which-face-3">
+            <img src="https://thispersondoesnotexist.com/image" alt="Face" width="150" height="150">
+          </label>
+        </div>
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="which-face-4" name="which-face" type="radio" value="face4">
+          <label class="govuk-label govuk-radios__label" for="which-face-4">
+            <img src="https://thispersondoesnotexist.com/image" alt="Face" width="150" height="150">
+          </label>
+        </div>
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="which-face-5" name="which-face" type="radio" value="face5">
+          <label class="govuk-label govuk-radios__label" for="which-face-5">
+            <img src="https://thispersondoesnotexist.com/image" alt="Face" width="150" height="150">
+          </label>
+        </div>
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="which-face-6" name="which-face" type="radio" value="face6">
+          <label class="govuk-label govuk-radios__label" for="which-face-6">
+            <img src="https://thispersondoesnotexist.com/image" alt="Face" width="150" height="150">
+          </label>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+
+  <div>
+    <button class="govuk-button" data-module="govuk-button">Continue</button>
+  </div>
+</form>
+{% endblock %}

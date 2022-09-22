@@ -86,3 +86,24 @@ export function voucheeDoneGet(req: Request, res: Response): void {
 export function vouchForSomeoneGet(req: Request, res: Response): void {
   res.render("govuk/vouch-for-someone");
 }
+
+
+// Identity confirmation page after logging in to a GOV.UK account
+export function useSavedProofOfIdGet(req: Request, res: Response): void {
+  res.render("vouch/vouch-for-someone/use-saved-proof-of-identity");
+}
+
+// Pick vouchee out of a line-up
+export function confirmLikenessGet(req: Request, res: Response): void {
+  res.render("vouch/vouch-for-someone/confirm-likeness");
+}
+
+// Confirm vouchee details and read disclaimer
+export function confirmDetailsGet(req: Request, res: Response): void {
+  res.render("vouch/vouch-for-someone/confirm-details");
+}
+
+// End of voucher journey
+export function voucherEndGet(req: Request, res: Response): void {
+  res.render("vouch/vouch-for-someone/done");
+}
