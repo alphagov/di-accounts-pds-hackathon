@@ -124,5 +124,9 @@ export function confirmDetailsPost(req: Request, res: Response): void {
 
 // End of voucher journey
 export function voucherEndGet(req: Request, res: Response): void {
-  res.render("vouch/vouch-for-someone/done");
+  if (req.session) {
+    res.render("vouch/vouch-for-someone/done", {
+      voucherName: req.session.voucherName,
+    });
+  }
 }
