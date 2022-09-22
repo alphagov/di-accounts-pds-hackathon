@@ -84,9 +84,12 @@ export function voucheeDoneGet(req: Request, res: Response): void {
 // ======================================================
 
 export function vouchForSomeoneGet(req: Request, res: Response): void {
-  res.render("govuk/vouch-for-someone");
+  if (req.session) {
+    res.render("govuk/vouch-for-someone", {
+      voucheeName: req.session.voucheeName,
+    });
+  }
 }
-
 
 // Identity confirmation page after logging in to a GOV.UK account
 export function useSavedProofOfIdGet(req: Request, res: Response): void {
@@ -95,15 +98,35 @@ export function useSavedProofOfIdGet(req: Request, res: Response): void {
 
 // Pick vouchee out of a line-up
 export function confirmLikenessGet(req: Request, res: Response): void {
-  res.render("vouch/vouch-for-someone/confirm-likeness");
+  if (req.session) {
+    res.render("vouch/vouch-for-someone/confirm-likeness", {
+      voucheeName: req.session.voucheeName,
+    });
+  }
+}
+
+export function confirmLikenessPost(req: Request, res: Response): void {
+  res.redirect("/vouch/vouch-for-someone/confirm-details");
 }
 
 // Confirm vouchee details and read disclaimer
 export function confirmDetailsGet(req: Request, res: Response): void {
-  res.render("vouch/vouch-for-someone/confirm-details");
+  if (req.session) {
+    res.render("vouch/vouch-for-someone/confirm-details", {
+      voucheeName: req.session.voucheeName,
+    });
+  }
+}
+
+export function confirmDetailsPost(req: Request, res: Response): void {
+  res.redirect("/vouch/vouch-for-someone/done");
 }
 
 // End of voucher journey
 export function voucherEndGet(req: Request, res: Response): void {
-  res.render("vouch/vouch-for-someone/done");
+  if (req.session) {
+    res.render("vouch/vouch-for-someone/done", {
+      voucheeName: req.session.voucheeName,
+    });
+  }
 }

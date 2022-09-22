@@ -12,7 +12,9 @@ import {
   voucheeYourNamePost,
   voucheeProvidePhotoPost,
   confirmLikenessGet,
+  confirmLikenessPost,
   confirmDetailsGet,
+  confirmDetailsPost,
   voucherEndGet,
   useSavedProofOfIdGet,
 } from "../controllers/vouch";
@@ -34,10 +36,14 @@ router.post("/request-vouch/voucher-details", voucheeVoucherDetailsPost);
 router.get("/request-vouch/confirmation", voucheeConfirmationGet);
 router.get("/request-vouch/done", voucheeDoneGet);
 
-router.get("/vouch-for-someone/use-saved-proof-of-identity", useSavedProofOfIdGet);
+router.get(
+  "/vouch-for-someone/use-saved-proof-of-identity",
+  useSavedProofOfIdGet
+);
 router.get("/vouch-for-someone/confirm-likeness", confirmLikenessGet);
+router.post("/vouch-for-someone/confirm-likeness", confirmLikenessPost);
 router.get("/vouch-for-someone/confirm-details", confirmDetailsGet);
+router.post("/vouch-for-someone/confirm-details", confirmDetailsPost);
 router.get("/vouch-for-someone/done", voucherEndGet);
-
 
 export default router;
