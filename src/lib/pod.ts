@@ -8,6 +8,7 @@ import {
   createSolidDataset,
 } from "@inrupt/solid-client";
 
+import { buildVouchRequestVC } from "../lib/vouchRequestVC"
 
 import SessionError from "../errors";
 
@@ -90,3 +91,12 @@ export async function writeFileToPod(
     console.error(error);
   }
 }
+
+export async function createVcBlob(
+  session: CookieSessionInterfaces.CookieSessionObject,
+): Promise<Blob> {
+  return new Blob([await buildVouchRequestVC(session)], {
+    type: "application/text",
+  });
+}
+
