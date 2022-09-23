@@ -9,6 +9,9 @@ import { getSessionFromStorage } from "@inrupt/solid-client-authn-node";
 
 import { createVcBlob } from "../lib/pod"
 
+import {
+  universalAccess,
+} from "@inrupt/solid-client";
 
 import {
   getDatasetUri,
@@ -17,6 +20,7 @@ import {
 
 import SessionError from "../errors";
 import { VouchArtifact } from "../lib/models/vc";
+
 
 async function download(url: Url, fileName: string) {
   const filePath = path.join(__dirname, "../", `public/images/${fileName}`);
@@ -111,11 +115,33 @@ export async function voucheeConfirmationPost(req: Request, res: Response): Prom
       }
   
       await writeVouchVcToPod(session, vouchArtifact);
-  res.redirect("/vouch/request-vouch/done");
+
+      // Set APC policy - Writing Vouch for VC
+      universalAccess.setAgentAccess(
+        `${containerUri}`,
+        appSession.webId,
+        { write: true },
+        { fetch: session.fetch }
+      ) 
+
+      // Set APC policy - For reading Vouch Request
+      // universalAccess.setAgentAccess(
+      //   fileUri,
+      //   appSession.webId,
+      //   { read: true },
+      //   { fetch: session.fetch }
+      // )
+
+      res.redirect("/vouch/request-vouch/done");
     }
   } else {
     throw new SessionError();
   }
+}
+
+// Journey completion page
+export function voucheeAcpGet(req: Request, res: Response): void {
+  res.render("vouch/request-vouch/acp");
 }
 
 // Journey completion page
