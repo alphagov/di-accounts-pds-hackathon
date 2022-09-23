@@ -35,7 +35,7 @@ async function vouchRequestVCData(
   return {
     type: ["VerifiableCredential", "VouchRequest"],
     request: {
-      voucher,
+      voucher: session.voucherWebId,
       vouchee: session.webid,
       status,
       name: session.fullName,
