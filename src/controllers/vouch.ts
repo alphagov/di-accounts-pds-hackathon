@@ -70,7 +70,8 @@ export function voucheeConfirmationGet(req: Request, res: Response): void {
     res.render("vouch/request-vouch/confirmation", {
       imageUrl: req.session.photoUrl,
       fullName: req.session.fullName,
-      voucher: req.session.voucher,
+      voucherEmail: req.session.voucherEmail,
+      voucherWebId: req.session.voucherWebId,
     });
   }
 }
