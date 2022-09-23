@@ -7,10 +7,22 @@
   <h1 class="govuk-heading-xl">Enter details of the person vouching for you</h1>
    <form class="form" action="/vouch/request-vouch/voucher-details" method="post">
     <div class="govuk-form-group">
-      <label class="govuk-label govuk-label--s" for="voucher">
+      <label class="govuk-label govuk-label--s" for="voucherEmail">
+        Email address
+      </label>
+      <div id="voucherEmail-hint" class="govuk-hint">
+        We'll use this address to contact the person vouching for you.
+      </div>
+      <input class="govuk-input govuk-!-width-two-thirds" id="voucherEmail" name="voucherEmail" type="text">
+    </div>
+    <div class="govuk-form-group">
+      <label class="govuk-label govuk-label--s" for="voucherWebId">
         WebID
       </label>
-      <input class="govuk-input govuk-!-width-two-thirds" id="voucher" name="voucher" type="text">
+      <div id="voucherWebId-hint" class="govuk-hint">
+        For prototype purposes enter the WebID of your intended voucher.
+      </div>
+      <input class="govuk-input govuk-!-width-two-thirds" id="voucherWebId" name="voucherWebId" type="text">
     </div>
     <button class="govuk-button" data-module="govuk-button">Continue</button>
   </form>

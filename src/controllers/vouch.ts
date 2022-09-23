@@ -58,7 +58,8 @@ export function voucheeVoucherDetailsGet(req: Request, res: Response): void {
 
 export function voucheeVoucherDetailsPost(req: Request, res: Response): void {
   if (req.session) {
-    req.session.voucher = req.body.voucher;
+    req.session.voucherEmail = req.body.voucherEmail;
+    req.session.voucherWebId = req.body.voucherWebId;
   }
   res.redirect("/vouch/request-vouch/confirmation");
 }
@@ -69,14 +70,21 @@ export function voucheeConfirmationGet(req: Request, res: Response): void {
     res.render("vouch/request-vouch/confirmation", {
       imageUrl: req.session.photoUrl,
       fullName: req.session.fullName,
-      voucher: req.session.voucher,
+      voucherEmail: req.session.voucherEmail,
+      voucherWebId: req.session.voucherWebId,
     });
   }
 }
 
+export function voucheeConfirmationPost(req: Request, res: Response): void {
+  res.redirect("/vouch/request-vouch/done");
+}
+
 // Journey completion page
 export function voucheeDoneGet(req: Request, res: Response): void {
-  res.render("vouch/request-vouch/done");
+  if (req.session) {
+    res.render("vouch/request-vouch/done", { voucher: req.session.voucher });
+  }
 }
 
 // ======================================================
