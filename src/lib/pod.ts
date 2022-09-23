@@ -5,6 +5,9 @@ import {
   getSourceUrl,
 } from "@inrupt/solid-client";
 
+
+import SessionError from "../errors";
+
 // We need to explicitly import the Node.js implementation of 'Blob' here
 // because it's not a global in Node.js (whereas it is global in the browser).
 // We may also need to explicitly convert our usage of 'Blob' into a Buffer
@@ -38,6 +41,17 @@ export async function getPhotoUrl(webId: string) {
 export async function getNameUrl(webId: string) {
   const pod = (await getPodUrlAll(webId))[0];
   return `${pod}/fullName`;
+}
+
+
+export async function getDatasetUri(session: Session, containerPath: string) {
+  if (session.info.webId && containerPath) {
+    const podUri = await getPodUrlAll(session.info.webId, {
+      fetch: session.fetch,
+    });
+    return `${podUri[0]}${containerPath}`;
+  }
+  throw new SessionError();
 }
 
 // Upload File to the targetFileURL.
