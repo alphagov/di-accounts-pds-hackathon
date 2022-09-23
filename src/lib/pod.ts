@@ -10,6 +10,8 @@ import {
 
 import { buildVouchRequestVC } from "../lib/vouchRequestVC"
 
+import { VouchArtifact } from "../lib/models/vc" 
+
 import SessionError from "../errors";
 
 // We need to explicitly import the Node.js implementation of 'Blob' here
@@ -100,3 +102,13 @@ export async function createVcBlob(
   });
 }
 
+export async function writeVouchVcToPod(
+  session: Session,
+  vouchArtifact: VouchArtifact
+) {
+  await writeFileToPod(vouchArtifact.file, vouchArtifact.fileUri, session);
+
+  console.log(
+    `Saved resources (Blob [${vouchArtifact.fileUri}]) to Pod`
+  );
+}

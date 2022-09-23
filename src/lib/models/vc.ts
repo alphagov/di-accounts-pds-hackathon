@@ -1,4 +1,5 @@
 import { VouchRequest} from "./vouch"
+import { Blob } from "node:buffer";
 
 export type VerifiableCredentialPayloadType =
  | VouchRequestVC
@@ -12,4 +13,9 @@ export interface VouchRequestVC {
   type?: VerifiableCredentialType[];
   request?: VouchRequest
   [k: string]: unknown;
+}
+
+export interface VouchArtifact {
+  file: Blob;
+  fileUri: string;
 }
