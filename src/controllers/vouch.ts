@@ -58,7 +58,8 @@ export function voucheeVoucherDetailsGet(req: Request, res: Response): void {
 
 export function voucheeVoucherDetailsPost(req: Request, res: Response): void {
   if (req.session) {
-    req.session.voucher = req.body.voucher;
+    req.session.voucherEmail = req.body.voucherEmail;
+    req.session.voucherWebId = req.body.voucherWebId;
   }
   res.redirect("/vouch/request-vouch/confirmation");
 }
