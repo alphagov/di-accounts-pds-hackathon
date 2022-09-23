@@ -1,4 +1,5 @@
-import express from "express";
+import express, { Request, Response, NextFunction } from "express";
+import redirectIfNotLoggedIn from "../lib/middleware/redirectIfNotLoggedIn";
 
 import {
   requestVouchGet,
@@ -21,6 +22,10 @@ import {
 } from "../controllers/vouch";
 
 const router = express.Router();
+
+router.use((req: Request, res: Response, next: NextFunction) => {
+  redirectIfNotLoggedIn(req, res, next);
+});
 
 router.get("/request-vouch", requestVouchGet);
 router.get("/vouch-for-someone", vouchForSomeoneGet);
