@@ -83,7 +83,7 @@ export function voucheeConfirmationPost(req: Request, res: Response): void {
 // Journey completion page
 export function voucheeDoneGet(req: Request, res: Response): void {
   if (req.session) {
-    res.render("vouch/request-vouch/done", { voucher: req.session.voucher });
+    res.render("vouch/request-vouch/done", { voucher: req.session.voucherEmail });
   }
 }
 
