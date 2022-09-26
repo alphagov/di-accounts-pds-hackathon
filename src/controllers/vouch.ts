@@ -178,7 +178,23 @@ export function directRelationGet(req: Request, res: Response): void {
 export function directRelationPost(req: Request, res: Response): void {
   if (req.session) {
     req.session.relation = req.body.relation;
-    res.redirect("/vouch/vouch-for-someone/confirm-details");
+    res.redirect("/vouch/vouch-for-someone/how-long");
+  }
+}
+
+// How long have you known them?
+export function howLongGet(req: Request, res: Response): void {
+  if (req.session) {
+    res.render("vouch/vouch-for-someone/how-long", {
+      voucheeName: req.session.voucheeName,
+    });
+  }
+}
+
+export function howLongPost(req: Request, res: Response): void {
+  if (req.session) {
+    req.session.howLong = req.body["how-long"];
+    res.redirect("/vouch/vouch-for-someone/confirm-likeness");
   }
 }
 
