@@ -216,6 +216,8 @@ export function confirmDetailsGet(req: Request, res: Response): void {
   if (req.session) {
     res.render("vouch/vouch-for-someone/confirm-details", {
       voucheeName: req.session.voucheeName,
+      relation: req.session.relation,
+      howLong: req.session.howLong,
     });
   }
 }
