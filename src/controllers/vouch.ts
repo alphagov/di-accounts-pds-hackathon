@@ -166,6 +166,22 @@ export function useSavedProofOfIdGet(req: Request, res: Response): void {
   res.render("vouch/vouch-for-someone/use-saved-proof-of-identity");
 }
 
+// Are you a direct relation?
+export function directRelationGet(req: Request, res: Response): void {
+  if (req.session) {
+    res.render("vouch/vouch-for-someone/relation", {
+      voucheeName: req.session.voucheeName,
+    });
+  }
+}
+
+export function directRelationPost(req: Request, res: Response): void {
+  if (req.session) {
+    req.session.relation = req.body.relation;
+    res.redirect("/vouch/vouch-for-someone/confirm-details");
+  }
+}
+
 // Pick vouchee out of a line-up
 export function confirmLikenessGet(req: Request, res: Response): void {
   if (req.session) {

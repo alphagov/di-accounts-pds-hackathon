@@ -13,6 +13,8 @@ import {
   voucheeDoneGet,
   voucheeYourNamePost,
   voucheeProvidePhotoPost,
+  directRelationGet,
+  directRelationPost,
   confirmLikenessGet,
   confirmLikenessPost,
   confirmDetailsGet,
@@ -48,6 +50,8 @@ router.get(
   "/vouch-for-someone/use-saved-proof-of-identity",
   useSavedProofOfIdGet
 );
+router.get("/vouch-for-someone/relation", directRelationGet);
+router.post("/vouch-for-someone/relation", directRelationPost);
 router.get("/vouch-for-someone/confirm-likeness", confirmLikenessGet);
 router.post("/vouch-for-someone/confirm-likeness", confirmLikenessPost);
 router.get("/vouch-for-someone/confirm-details", confirmDetailsGet);

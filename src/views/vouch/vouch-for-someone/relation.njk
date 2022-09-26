@@ -1,0 +1,38 @@
+{% extends "layouts/base.njk" %}
+
+{% block content %}
+
+<form class="form" action="/vouch/vouch-for-someone/relation" method="post">
+  <div class="govuk-form-group">
+    <fieldset class="govuk-fieldset">
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+        <h1 class="govuk-fieldset__heading">
+          Are you a direct relation of {{ voucheeName }}?
+        </h1>
+      </legend>
+      <div id="relation-hint" class="govuk-hint">
+        A direct relation is a parent, child or sibling of {{ voucheeName }}.
+      </div>
+      <div class="govuk-radios" data-module="govuk-radios">
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="relation" name="relation" type="radio" value="yes">
+          <label class="govuk-label govuk-radios__label" for="relation">
+            Yes
+          </label>
+        </div>
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="relation-2" name="relation" type="radio" value="no">
+          <label class="govuk-label govuk-radios__label" for="relation-2">
+            No
+          </label>
+        </div>
+      </div>
+      
+    </fieldset>
+  </div>
+
+  <div>
+    <button class="govuk-button" data-module="govuk-button">Continue</button>
+  </div>
+</form>
+{% endblock %}
