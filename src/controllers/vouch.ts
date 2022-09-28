@@ -136,11 +136,6 @@ export async function voucheeConfirmationPost(
 }
 
 // Journey completion page
-export function voucheeAcpGet(req: Request, res: Response): void {
-  res.render("vouch/request-vouch/acp");
-}
-
-// Journey completion page
 export function voucheeDoneGet(req: Request, res: Response): void {
   if (req.session) {
     res.render("vouch/request-vouch/done", {
