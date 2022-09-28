@@ -1,10 +1,9 @@
-import * as fs from 'fs';
 import fetch from "node-fetch";
 import { v4 as uuidv4 } from "uuid";
 
+
 import {
   Url,
-  WebId,
   Base64EncodedString
 } from "./models/common"
 
@@ -29,15 +28,12 @@ async function base64EncodeFile(photoUrl: Url): Promise<Base64EncodedString> {
 
 async function vouchRequestVCData(
   session: CookieSessionInterfaces.CookieSessionObject,
-  voucher: WebId,
-  status: Url,
 ): Promise<VouchRequestVC> {
   return {
     type: ["VerifiableCredential", "VouchRequest"],
     request: {
-      voucher,
+      voucher: session.voucherWebId,
       vouchee: session.webid,
-      status,
       name: session.fullName,
       photo: await base64EncodeFile(session.photoUrl),
       issued: new Date(),
@@ -49,14 +45,8 @@ async function vouchRequestVCData(
 
 export async function buildVouchRequestVC(
   session: CookieSessionInterfaces.CookieSessionObject,
-  voucher: WebId,
-  status: Url,
 ): Promise<string> {
-  const payload = await vouchRequestVCData(
-    session,
-    voucher,
-    status,
-  );
+  const payload = await vouchRequestVCData(session);
 
   return generateJWT(payload, session.webId);
 }

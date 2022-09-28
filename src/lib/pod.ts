@@ -3,7 +3,16 @@ import {
   getPodUrlAll,
   overwriteFile,
   getSourceUrl,
+  SolidDataset,
+  getSolidDataset,
+  createSolidDataset,
 } from "@inrupt/solid-client";
+
+import { buildVouchRequestVC } from "../lib/vouchRequestVC"
+
+import { VouchArtifact } from "../lib/models/vc" 
+
+import SessionError from "../errors";
 
 // We need to explicitly import the Node.js implementation of 'Blob' here
 // because it's not a global in Node.js (whereas it is global in the browser).
@@ -40,6 +49,29 @@ export async function getNameUrl(webId: string) {
   return `${pod}/fullName`;
 }
 
+export async function getOrCreateDataset(
+  session: Session,
+  datasetUri: string
+): Promise<SolidDataset> {
+  try {
+    const dataset = await getSolidDataset(datasetUri, { fetch: session.fetch });
+    return dataset;
+  } catch (fetchError) {
+    const dataset = createSolidDataset();
+    return dataset;
+  }
+}
+
+export async function getDatasetUri(session: Session, containerPath: string) {
+  if (session.info.webId && containerPath) {
+    const podUri = await getPodUrlAll(session.info.webId, {
+      fetch: session.fetch,
+    });
+    return `${podUri[0]}${containerPath}`;
+  }
+  throw new SessionError();
+}
+
 // Upload File to the targetFileURL.
 // If the targetFileURL exists, overwrite the file.
 // If the targetFileURL does not exist, create the file at the location.
@@ -60,4 +92,23 @@ export async function writeFileToPod(
   } catch (error) {
     console.error(error);
   }
+}
+
+export async function createVcBlob(
+  session: CookieSessionInterfaces.CookieSessionObject,
+): Promise<Blob> {
+  return new Blob([await buildVouchRequestVC(session)], {
+    type: "application/text",
+  });
+}
+
+export async function writeVouchVcToPod(
+  session: Session,
+  vouchArtifact: VouchArtifact
+) {
+  await writeFileToPod(vouchArtifact.file, vouchArtifact.fileUri, session);
+
+  console.log(
+    `Saved resources (Blob [${vouchArtifact.fileUri}]) to Pod`
+  );
 }

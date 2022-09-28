@@ -5,6 +5,22 @@ import { Request, Response } from "express";
 import { v4 as uuidv4 } from "uuid";
 import { Url } from "../lib/models/common";
 import { getHostname } from "../config";
+import { getSessionFromStorage } from "@inrupt/solid-client-authn-node";
+
+import { createVcBlob } from "../lib/pod"
+
+import {
+  universalAccess,
+} from "@inrupt/solid-client";
+
+import {
+  getDatasetUri,
+  writeVouchVcToPod
+} from "../lib/pod";
+
+import SessionError from "../errors";
+import { VouchArtifact } from "../lib/models/vc";
+
 
 async function download(url: Url, fileName: string) {
   const filePath = path.join(__dirname, "../", `public/images/${fileName}`);
@@ -76,14 +92,62 @@ export function voucheeConfirmationGet(req: Request, res: Response): void {
   }
 }
 
-export function voucheeConfirmationPost(req: Request, res: Response): void {
-  res.redirect("/vouch/request-vouch/done");
+export async function voucheeConfirmationPost(req: Request, res: Response): Promise<void> {
+  const session = await getSessionFromStorage(req.session?.sessionId);
+  if (session && session.info && session.info.webId) {
+    const vouchRequestUUID = uuidv4()
+
+    const containerUri = await getDatasetUri(
+      session,
+      `vouch/${vouchRequestUUID}`
+    );
+
+    const fileUri = `${containerUri}/vouch-request-vc`;
+
+    if (req.session) {
+      const appSession: CookieSessionInterfaces.CookieSessionObject = req.session
+      appSession.webId = session.info.webId
+      const blobFile = await createVcBlob(appSession)
+    
+      const vouchArtifact: VouchArtifact = {
+        file: blobFile,
+        fileUri: fileUri
+      }
+  
+      await writeVouchVcToPod(session, vouchArtifact);
+
+      // Set APC policy - Writing Vouch for VC
+      universalAccess.setAgentAccess(
+        `${containerUri}`,
+        appSession.webId,
+        { write: true },
+        { fetch: session.fetch }
+      ) 
+
+      // Set APC policy - For reading Vouch Request
+      // universalAccess.setAgentAccess(
+      //   fileUri,
+      //   appSession.webId,
+      //   { read: true },
+      //   { fetch: session.fetch }
+      // )
+
+      res.redirect("/vouch/request-vouch/done");
+    }
+  } else {
+    throw new SessionError();
+  }
+}
+
+// Journey completion page
+export function voucheeAcpGet(req: Request, res: Response): void {
+  res.render("vouch/request-vouch/acp");
 }
 
 // Journey completion page
 export function voucheeDoneGet(req: Request, res: Response): void {
   if (req.session) {
-    res.render("vouch/request-vouch/done", { voucher: req.session.voucher });
+    res.render("vouch/request-vouch/done", { voucher: req.session.voucherEmail });
   }
 }
 

@@ -14,7 +14,6 @@ export enum VouchRequestStatusStates {
 export interface VouchRequest {
   voucher: WebId;
   vouchee: WebId;
-  status: Url;
   name: Name;
   photo: Base64EncodedString;
   issued: Date;
