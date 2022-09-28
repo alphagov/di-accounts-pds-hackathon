@@ -1,0 +1,29 @@
+{% extends "layouts/base.njk" %}
+
+{% block content %}
+
+<form class="form" action="/vouch/vouch-for-someone/how-long" method="post">
+  <div class="govuk-form-group">
+    <fieldset class="govuk-fieldset">
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+        <h1 class="govuk-fieldset__heading">
+          How long have you known {{ voucheeName }}?
+        </h1>
+      </legend>
+
+      <select class="govuk-select" id="how-long" name="how-long">
+        <option value="Less than 6 months">Less than 6 months</option>
+        <option value="Between 6 months and 1 year">Between 6 months and 1 year</option>
+        <option value="Between 1 and 2 years">Between 1 and 2 years</option>
+        <option value="Between 2 and 3 years">Between 2 and 3 years</option>
+        <option value="More than 3 years">More than 3 years</option>
+      </select>
+      
+    </fieldset>
+  </div>
+
+  <div>
+    <button class="govuk-button" data-module="govuk-button">Continue</button>
+  </div>
+</form>
+{% endblock %}

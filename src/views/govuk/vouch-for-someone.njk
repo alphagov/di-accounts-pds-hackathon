@@ -6,11 +6,7 @@
 
 {% block content %}
 <h1 class="govuk-heading-xl">Confirm {{ voucheeName }}’s identity  </h1>
-    <p class="govuk-body">To confirm {{ voucheeName }}’s identity you must:</p>
-    <ul class="govuk-list govuk-list--bullet">
-      <li>have a valid UK passport or driving licence </li>
-      <li>have known {{ voucheeName }} for at least 2 years </li>
-    </ul>
+    <p class="govuk-body">To confirm {{ voucheeName }}’s identity you must have a valid UK passport or driving licence.</p>
 
     <a href="/vouch/vouch-for-someone/use-saved-proof-of-identity" role="button" draggable="false" class="govuk-button govuk-button--start govuk-!-margin-top-2 govuk-!-margin-bottom-8"  data-module="govuk-button">
       Start
@@ -21,6 +17,6 @@
 
     <h2 class="govuk-heading-m">Before you start</h2>    <div class="gem-c-govspeak govuk-govspeak " data-module="govspeak" data-govspeak-module-started="true">
       <p class="govuk-body">You’ll need your passport or driving licence details. </p>
-      <p class="govuk-body">You’ll be asked to confirm {{ voucheeName }}’s full name. You’ll also need to identify {{ voucheeName }} from a series of photos.</p>
+      <p class="govuk-body">You’ll be asked to confirm {{ voucheeName }}’s full name and how long you've known them. You’ll also need to identify {{ voucheeName }} from a series of photos.</p>
     </div>
 {% endblock %}

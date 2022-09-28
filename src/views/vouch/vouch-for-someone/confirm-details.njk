@@ -23,6 +23,23 @@
         <img src="https://thispersondoesnotexist.com/image" alt="Face" width="150" height="150">
       </dd>
     </div>
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        Are you a direct relation?
+      </dt>
+      <dd class="govuk-summary-list__value">
+        {{ relation | capitalize }}
+      </dd>
+    </div>
+    <div class="govuk-summary-list__row">
+      <dt class="govuk-summary-list__key">
+        How long have you known them?
+      </dt>
+      <dd class="govuk-summary-list__value">
+        {{ howLong | capitalize}}
+      </dd>
+    </div>
+
   </dl>
 
   <h2 class="govuk-heading-l">Declaration</h2>
@@ -34,7 +51,6 @@
     </strong>
   </div>
   <p class="govuk-body">I confirm that to the best of my knowledge the information I have provided is correct and complete.</p>
-  <p class="govuk-body">I confirm that I have known {{ voucheeName }} for at least 2 years. </p>
 
   <div>
     <button class="govuk-button" data-module="govuk-button">Confirm</button>
