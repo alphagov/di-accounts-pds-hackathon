@@ -42,7 +42,7 @@ The 'vouch for someone' journey can be clicked through, but it doesn't interact 
 1. Run `npm ci` to install dependencies
 2. Run `npm run build` to build the app
 3. Run `npm start` to start the local server
-4. Visit `http://localhost:3000` in your browser
+4. Visit `http://localhost:3000` in your browser. You'll need to sign up for an account on [Inrupt's Podspaces](https://start.inrupt.com) which will provide you a WebID and a PDS to use.
 
 ## Deploying the app
 
