@@ -31,6 +31,12 @@ Once the user providing the vouch has completed the journey, the app writes a VC
 other person's. These VCs link to each other and would allow us to build a graph of users who have vouched for each other to
 aid in things like fraud detection.
 
+## How far did we get?
+
+The 'request a vouch' journey works as described above. We had to include a question to ask for the voucher's WebID; in reality we would just ask for the email address and look up the voucher's WebID based on that. The app stores the `VouchRequest` VC, but we've not tried to decode or use the contents of that VC at all.
+
+The 'vouch for someone' journey can be clicked through, but it doesn't interact with the user's PDS at all.
+
 ## Running the prototype app
 
 1. Run `npm ci` to install dependencies
