@@ -12,6 +12,8 @@ For example, if the civil service issued a VC to civil servant's personal data s
 with those credentials as 'stronger' than those from users without them. We ran out of time at the event to explore this
 topic in more detail however.
 
+Supporting material can be found on [Google Drive](https://drive.google.com/drive/folders/1FJm-azglfwbVEepQJlq3jGTkMJIA_e2B)
+
 This prototype contains two journeys:
 
 ## Requesting a vouch
