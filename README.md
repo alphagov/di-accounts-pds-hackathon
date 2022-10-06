@@ -1,5 +1,7 @@
 # Personal Data Store hackathon prototype
 
+_This repository is archived_
+
 This prototype was created for a cross-public sector event looking at personal data stores (PDS) and how to use them to model relationships between users in September 2022.
 We wanted to explore an online vouching system for people to prove their identity, using personal data stores, linked data and verifiable credentials (VCs).
 
